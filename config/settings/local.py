@@ -1,3 +1,5 @@
+import os.path as op
+
 from .base import *  # noqa
 from .base import env
 
@@ -33,7 +35,6 @@ EMAIL_BACKEND = env("DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.c
 # http://whitenoise.evans.io/en/latest/django.html#using-whitenoise-in-development
 INSTALLED_APPS = ["whitenoise.runserver_nostatic"] + INSTALLED_APPS  # noqa: F405
 
-
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites
@@ -56,3 +57,6 @@ INSTALLED_APPS += ["django_extensions"]  # noqa: F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+PROJECT_ROOT = op.dirname(op.dirname(op.dirname(op.abspath(__file__))))
+
+STORE_ROOT = op.join(PROJECT_ROOT, "store", "files")

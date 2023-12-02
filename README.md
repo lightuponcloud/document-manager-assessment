@@ -10,7 +10,7 @@ The Propylon Document Management Technical Assessment is a simple (and incomplet
 5. `$ direnv allow .`
 6. `$ pipenv install -r requirements/local.txt`.  If Python 3.11 is not the default Python version on your system you may need to explicitly create the virtual environment (`$ python3.11 -m venv .venv`) prior to running the install command. 
 7. `$ pipenv run python manage.py migrate` to create the database.
-8. `$ pipenv run python manage.py load_file_fixtures` to create the fixture file versions.
+8. `$ pipenv run python manage.py load_file_fixtures` to create the fixture file versions. This command also adds two test users.
 9. `$ pipenv run python manage.py runserver 0.0.0.0:8001` to start the development server on port 8001.
 10. Navigate to the client/doc-manager directory.
 11. `$ npm install` to install the dependencies.
@@ -31,6 +31,7 @@ Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings
 
       $ python manage.py createsuperuser
 
+
 ### Type checks
 
 Running type checks with mypy:
@@ -48,3 +49,14 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 #### Running tests with pytest
 
     $ pytest
+
+
+#### Solution Description
+
+Proposed solution consits of FileModel class, which is used to store files on filesystem by the path, based on FK.
+
+Integer Foreign Key is converted to 9-digit filename, then split this string to 3 parts and then files are stored as 000/000/001/000000001 etc.
+
+Reason: when many files are uploaded, performance deteriorates, as every file read operation will go over list of files on filesystem.
+
+demo.sh bash script contains curl commands for authenticating using token, uploading file and retrieving file.
