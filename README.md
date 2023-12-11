@@ -49,7 +49,9 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 
 #### Running tests with pytest
 
-    $ pytest
+    $ pytest-3 propylon_document_manager/file_versions/tests
+
+    $ pytest-3 propylon_document_manager/users/tests
 
 
 #### Solution Description
