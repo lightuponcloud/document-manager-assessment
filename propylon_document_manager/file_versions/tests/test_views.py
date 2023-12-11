@@ -1,22 +1,11 @@
 import pytest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
-from django.conf import settings
-from django.contrib import messages
-from django.contrib.auth.models import AnonymousUser
-from django.contrib.messages.middleware import MessageMiddleware
-from django.contrib.sessions.middleware import SessionMiddleware
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpRequest
 from django.test import RequestFactory
-from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
-from django.core.files.uploadedfile import SimpleUploadedFile
 
-from propylon_document_manager.file_versions.tests.factories import FileModelFactory
 from propylon_document_manager.users.models import User
-from propylon_document_manager.file_versions.models import (
-    FileModel,
-    FileVersion)
+from propylon_document_manager.file_versions.models import FileVersion
 from propylon_document_manager.file_versions.api.views import (
     FileVersionViewSet)
 

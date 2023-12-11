@@ -3,7 +3,7 @@ from datetime import datetime
 
 from django.db import models
 from django.conf import settings
-from django.db.models.deletion import CASCADE, Collector
+from django.db.models.deletion import CASCADE
 
 from propylon_document_manager.users.models import BaseRestrictedModel
 

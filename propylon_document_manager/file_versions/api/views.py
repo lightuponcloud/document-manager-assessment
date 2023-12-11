@@ -1,9 +1,4 @@
-from django.shortcuts import render
-from django.views.generic import DetailView, RedirectView, UpdateView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser
-from django.contrib.messages.views import SuccessMessageMixin
-from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from django.http import Http404
 from django.http import HttpResponseForbidden
@@ -16,7 +11,7 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.decorators import action
 
 from propylon_document_manager.file_versions.models import FileVersion, FileModel
-from .serializers import FileVersionSerializer, FileModelSerializer
+from propylon_document_manager.file_versions.api.serializers import FileVersionSerializer
 
 
 class FileVersionViewSet(RetrieveModelMixin, ListModelMixin, GenericViewSet):

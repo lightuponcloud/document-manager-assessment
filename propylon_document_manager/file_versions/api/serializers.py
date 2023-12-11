@@ -8,9 +8,3 @@ class FileVersionSerializer(serializers.ModelSerializer):
     class Meta:
         model = FileVersion
         fields = "__all__"
-
-
-class FileModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FileModel
-        fields = "__all__"
