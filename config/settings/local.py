@@ -1,5 +1,3 @@
-import os.path as op
-
 from .base import *  # noqa
 from .base import env
 
@@ -57,6 +55,3 @@ INSTALLED_APPS += ["django_extensions"]  # noqa: F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-PROJECT_ROOT = op.dirname(op.dirname(op.dirname(op.abspath(__file__))))
-
-STORE_ROOT = op.join(PROJECT_ROOT, "store", "files")

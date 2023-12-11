@@ -10,10 +10,13 @@ from rest_framework.authtoken.views import obtain_auth_token
 # API URLS
 urlpatterns = [
     # API base url
-    path("api/", include("config.api_router")),
+    path("users/", include("propylon_document_manager.users.urls",
+                               namespace="users")),
+    path("file_versions/", include("propylon_document_manager.file_versions.urls",
+                                   namespace="file_versions")),
     # DRF auth token
     path("api-auth/", include("rest_framework.urls")),
-    path("auth-token/", obtain_auth_token),
+    path("auth-token/", obtain_auth_token, name="account_login"),
     path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
         "api/docs/",

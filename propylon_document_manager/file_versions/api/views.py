@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 from django.http import Http404
 from django.http import HttpResponseForbidden
 
@@ -112,3 +113,7 @@ class FileVersionViewSet(RetrieveModelMixin, ListModelMixin, GenericViewSet):
         except Token.DoesNotExist:
             return None
         return token.user
+
+    def get_success_url(self):
+        assert self.request.user.is_authenticated  # for mypy to know that the user is authenticated
+        return reverse("file_versions:api")

@@ -2,6 +2,7 @@
 Base settings to build other settings files upon.
 """
 from pathlib import Path
+import os.path as op
 
 import environ
 
@@ -305,3 +306,7 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+PROJECT_ROOT = op.dirname(op.dirname(op.dirname(op.abspath(__file__))))
+
+STORE_ROOT = op.join(PROJECT_ROOT, "store", "files")
